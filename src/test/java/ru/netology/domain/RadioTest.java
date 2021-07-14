@@ -2,7 +2,7 @@ package ru.netology.domain;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RadioTest {
     Radio radio = new Radio();
@@ -16,6 +16,19 @@ class RadioTest {
     }
 
     @Test
+    public void shouldChangeStationToMax() {
+        radio.setCurrentStation(5);
+        assertEquals(9, radio.getMaxStation());
+    }
+
+    @Test
+    public void shouldChangeStationToMin() {
+        radio.setCurrentStation(5);
+        assertEquals(0, radio.getMinStation());
+    }
+
+
+    @Test
     public void shouldIncreaseStation() {
         radio.setCurrentStation(8);
         assertEquals(9, radio.nextStation());
@@ -27,11 +40,11 @@ class RadioTest {
         assertEquals(0, radio.nextStation());
     }
 
-        @Test
-        public void shouldIncreaseStationAboveMax() {
-            radio.setCurrentStation(10);
-            assertEquals(0, radio.nextStation());
-        }
+    @Test
+    public void shouldIncreaseStationAboveMax() {
+        radio.setCurrentStation(10);
+        assertEquals(0, radio.getCurrentStation());
+    }
 
     @Test
     public void shouldDecreaseStation() {
@@ -62,6 +75,18 @@ class RadioTest {
     }
 
     @Test
+    public void shouldChangeVolumeToMax() {
+        radio.setCurrentVolume(5);
+        assertEquals(10, radio.getMaxVolume());
+    }
+
+    @Test
+    public void shouldChangeVolumeToMin() {
+        radio.setCurrentVolume(5);
+        assertEquals(0, radio.getMinVolume());
+    }
+
+    @Test
     public void shouldIncreaseVolume() {
         radio.setCurrentVolume(5);
         assertEquals(6, radio.increaseVolume());
@@ -76,7 +101,7 @@ class RadioTest {
     @Test
     public void shouldIncreaseVolumeOverMax() {
         radio.setCurrentVolume(11);
-        assertEquals (10, radio.increaseVolume());
+        assertEquals(10, radio.increaseVolume());
 
     }
 

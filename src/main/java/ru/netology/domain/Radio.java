@@ -8,16 +8,6 @@ public class Radio {
     private int minVolume = 0;
     private int maxVolume = 10;
 
-    //    if (currentStation = 9) {
-    //        nextStation = 0;}
-    //    if (currentStation = 0) {
-    //        prevStation = 9;}
-    //    if (currentVolume = 10) {
-    //        upVolume = 10);}
-    //    if (currentVolume = 0) {
-    //        lowVolume = 0;
-    //    }
-
     public int getMaxStation() {
         return maxStation;
     }
@@ -39,6 +29,12 @@ public class Radio {
     }
 
     public void setCurrentStation(int currentStation) {
+        if (currentStation > 9) {
+            return;
+        }
+        if (currentStation < 0) {
+            return;
+        }
         this.currentStation = currentStation;
     }
 
@@ -67,37 +63,34 @@ public class Radio {
     }
 
     public int increaseVolume() {
-        if (currentVolume < 10) {
+        if (currentVolume < maxVolume) {
             currentVolume = currentVolume + 1;
-        }
-        else {
-            currentVolume = 10;
+        } else {
+            currentVolume = maxVolume;
         }
         return currentVolume;
     }
 
     public int decreaseVolume() {
-        if (currentVolume > 0) {
+        if (currentVolume > minVolume) {
             currentVolume = currentVolume - 1;
-        }
-        else {
-            currentVolume = 0;
+        } else {
+            currentVolume = minVolume;
         }
         return currentVolume;
     }
 
     public int nextStation() {
-        if (currentStation < 9) {
+        if (currentStation < maxStation) {
             currentStation = currentStation + 1;
-        }
-        else  {
-            currentStation = 0;
+        } else {
+            currentStation = minStation;
         }
         return currentStation;
     }
 
     public int prevStation() {
-        if (currentStation > 0) {
+        if (currentStation > minStation) {
             currentStation = currentStation - 1;
         } else {
             currentStation = maxStation;
@@ -105,6 +98,7 @@ public class Radio {
         return currentStation;
     }
 }
+
 
 
 
