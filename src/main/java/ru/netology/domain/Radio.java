@@ -43,10 +43,11 @@ public class Radio {
     }
 
     public void setCurrentStation(int currentStation) {
+      
         if (currentStation > quantityStation - 1) {
             return;
         }
-        if (currentStation < 0) {
+        if (currentStation < minStation) {
             return;
         }
         this.currentStation = currentStation;
@@ -118,7 +119,6 @@ public class Radio {
         return currentStation;
     }
 }
-
 
 
 
